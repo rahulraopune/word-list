@@ -83,6 +83,7 @@ buildscript {
             'google'         : [
                     'oosLicenses': [
                             'core': "com.google.android.gms:play-services-oss-licenses:${versions.googleServicesVersion}",
+                            'vision' : "com.google.android.gms:play-services-vision:${versions.googleServicesVersion}"
                     ],
             ],
             'dagger'         : [

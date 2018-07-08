@@ -86,4 +86,8 @@ class MainPresenter @Inject constructor(
     override fun onBackPressed() {
         view.handleFinishActivity()
     }
+
+    override fun onScannerClicked() {
+        view.openScannerActivity()
+    }
 }

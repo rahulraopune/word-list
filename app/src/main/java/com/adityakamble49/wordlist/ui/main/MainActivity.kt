@@ -10,17 +10,20 @@ import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.util.Log
 import android.view.View
 import com.adityakamble49.wordlist.R
 import com.adityakamble49.wordlist.ui.about.AboutActivity
 import com.adityakamble49.wordlist.ui.common.BaseInjectableActivity
 import com.adityakamble49.wordlist.ui.list.WordListFragment
 import com.adityakamble49.wordlist.ui.marketplace.MarketplaceFragment
+import com.adityakamble49.wordlist.ui.scanner.ScannerActivity
 import com.adityakamble49.wordlist.ui.search.SearchFragment
 import com.adityakamble49.wordlist.ui.settings.SettingsFragment
 import com.adityakamble49.wordlist.ui.word.WordActivity
 import com.adityakamble49.wordlist.utils.invisible
 import com.adityakamble49.wordlist.utils.replaceFragment
+import com.adityakamble49.wordlist.utils.showToast
 import com.adityakamble49.wordlist.utils.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -45,6 +48,10 @@ class MainActivity : BaseInjectableActivity(), MainContract.View, View.OnClickLi
     @IdRes private val ID_NAV_SETTINGS = R.id.nav_settings
     @IdRes private val ID_NAV_ABOUT = R.id.nav_about
 
+    companion object {
+        val RC_CAMERA_CODE = 1234
+        val RESULT_WORD = "RESULT_WORD"
+    }
 
     /*
      * Lifecycle Functions
@@ -253,5 +260,9 @@ class MainActivity : BaseInjectableActivity(), MainContract.View, View.OnClickLi
         } else {
             finish()
         }
+    }
+
+    override fun openScannerActivity() {
+        startActivityForResult(Intent(this, ScannerActivity::class.java), 1234)
     }
 }

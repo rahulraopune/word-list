@@ -114,6 +114,7 @@ dependencies {
     kapt deps.android.arch.archCompiler
     kapt deps.android.arch.roomCompiler
     implementation deps.google.oosLicenses.core
+    implementation deps.google.oosLicenses.vision
 
     debugImplementation deps.debugDb.core
 

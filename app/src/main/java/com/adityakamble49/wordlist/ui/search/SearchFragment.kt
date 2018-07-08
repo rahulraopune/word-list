@@ -15,6 +15,7 @@ import android.widget.AdapterView
 import com.adityakamble49.wordlist.R
 import com.adityakamble49.wordlist.model.Word
 import com.adityakamble49.wordlist.ui.common.BaseInjectableFragment
+import com.adityakamble49.wordlist.ui.scanner.ScannerActivity
 import com.adityakamble49.wordlist.ui.word.WordActivity
 import com.adityakamble49.wordlist.utils.invisible
 import com.adityakamble49.wordlist.utils.visible
@@ -129,7 +130,12 @@ class SearchFragment : BaseInjectableFragment(), SearchContract.View,
         val searchItem = menu.findItem(R.id.action_search_all)
         searchView = searchItem.actionView as SearchView
         searchView.isIconified = false
-        searchView.maxWidth = Integer.MAX_VALUE
+
+        var cameraItem = menu.findItem(R.id.action_search_camera)
+        cameraItem.setOnMenuItemClickListener {
+            startActivityForResult(Intent(context,ScannerActivity::class.java),1234)
+            true
+        }
 
         searchView.setOnCloseListener {
             searchView.onActionViewCollapsed()
@@ -152,5 +158,15 @@ class SearchFragment : BaseInjectableFragment(), SearchContract.View,
 
     private fun closeFragment() {
         activity?.onBackPressed()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1234) {
+            var word : String? = data?.getStringExtra("RESULT_WORD")
+            if (word != null) {
+                searchView.setQuery(word,false)
+            }
+        }
     }
 }

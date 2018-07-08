@@ -6,6 +6,7 @@ import com.adityakamble49.wordlist.ui.common.WordListViewModelFactory
 import com.adityakamble49.wordlist.ui.list.WordListViewModel
 import com.adityakamble49.wordlist.ui.main.MainActivityViewModel
 import com.adityakamble49.wordlist.ui.marketplace.MarketplaceViewModel
+import com.adityakamble49.wordlist.ui.scanner.ScannerViewModel
 import com.adityakamble49.wordlist.ui.search.SearchViewModel
 import com.adityakamble49.wordlist.ui.word.WordViewModel
 import dagger.Binds
@@ -47,6 +48,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     abstract fun bindSearchViewModel(searchViewModel: SearchViewModel): ViewModel
+
+    /*@Binds
+    @IntoMap
+    @ViewModelKey(ScannerViewModel::class)
+    abstract fun bindSearchViewModel(scannerViewModel: ScannerViewModel): ViewModel*/
 
 
     @Binds

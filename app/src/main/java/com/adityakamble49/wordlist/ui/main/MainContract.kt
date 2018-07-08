@@ -22,6 +22,7 @@ interface MainContract {
         fun openMarketplace()
         fun openSettings()
         fun openAbout()
+        fun openScannerActivity()
         fun resetNavigationHistory(@IdRes navigationItem: Int = R.id.nav_wordlist)
         fun handleFinishActivity()
     }
@@ -36,5 +37,6 @@ interface MainContract {
         fun onClickPracticeWords()
         fun onResume()
         fun onBackPressed()
+        fun onScannerClicked()
     }
 }
